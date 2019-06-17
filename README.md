@@ -6,6 +6,10 @@ Creation-Date: 2019-06-16T14:09:48+02:00
 
 Created Sunday 16 June 2019
 
+contain  notes/examples of Udemy course   "Automate the Boring Stuff with Python Programming"
+
+https://www.udemy.com/automate/
+
 # Book
 
 Automating the boring stuff with python

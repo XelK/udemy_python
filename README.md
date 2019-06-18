@@ -645,3 +645,24 @@ In [136]: age = 26
 In [137]: 'Hello %s, you are %s' % (name,age)                                   
 Out[137]: 'Hello Alex, you are 26'
 '''
+
+# Running programs from the command line
+
+*shebang line into the script:*
+* windows : #! python3
+* os x 	  : #! [/usr/bin/env](/usr/bin/env) python3
+* linux   : #! /usr/bin/python3
+
+*in windows cmd windows disappear quickly, you have to run pause.exe after the script, it can be done with batch script:*
+
+> @py c:\hello.py %*
+@pause
+
+if you don't need a windows to see output:
+  ''@pyw c:\hello.py %*''
+
+### read arguments
+
+> import sys
+print('Hello %s' % sys.argv[2])
+print(sys.argv)

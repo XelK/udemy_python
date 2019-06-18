@@ -10,7 +10,9 @@ contain  notes/examples of Udemy course   "Automate the Boring Stuff with Python
 
 https://www.udemy.com/automate/
 
-# Book
+# Python Basics
+
+## Book
 
 Automating the boring stuff with python
 
@@ -22,20 +24,20 @@ opensource book/printable/available on amazon
 
 --------------------
 
-# Expressions
+## Expressions
 
 *all expressions are just value and operators*
 * value: 2 , 5 , 39204
 * operators: + , - , *, ...
 
-# Data Types
+## Data Types
 
 *all data belong to types*
 * integer
 * float
 * string
 
-# Variables
+## Variables
 
 *box for some values*
 *override the variable*
@@ -56,7 +58,7 @@ str ( int (myAge))
 
 --------------------
 
-# Flow Charts
+# Flow Control
 
 #### boolean values
 
@@ -206,7 +208,7 @@ print ('cat', 'dog', 'mouse', sep= 'ABC')
 	global eggs
 	eggs = 'Hello'
 
-# Try and Except Statements
+# Handling Errors with try/except
 
 *it's possible to handle errors and permit terminate the program if some operation failes and not crash the entire program*
 

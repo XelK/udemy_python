@@ -98,7 +98,7 @@ str ( int (myAge))
 ### While
 
 > while spam < 5: 
-spam = spam + 1
+  spam = spam + 1
 
 #### break statements / contonue statements
 
@@ -108,14 +108,14 @@ spam = spam + 1
 ### For loops
 
 > for i in range(5):
-	print (' hello' + str (i))
+  	print (' hello' + str (i))
 
 *while loop is equivalent to the fot loop*
 
 #### range function
 
 > range (10) 		→(0,9)
-range(3,20) 		→ (3,19)
+  range(3,20) 		→ (3,19)
 
 * for loop:	
 	* for i in range (10)   → (0,9)
@@ -134,28 +134,28 @@ range(3,20) 		→ (3,19)
 *modules contain specific functions : math module / rando module/ ecc*
 *to import module:*
 > import random
-import random, sys, os , math # importing muliple modules
+  import random, sys, os , math # importing muliple modules
 
 *to call function from the module:*
 	   ''random.randint(1,10)  #function randint from module random''
 
 *bad prcacticse:*
 > from random import *
-randint(1,10)
+  randint(1,10)
 
 *in this case import all from module, and you can use function without indicate the module name*
 
 **terminate the programm before end of flow**
 > import sys
-sys.exit( )
+  sys.exit( )
 
 **pyperclip module**
 *permit to copy/paste text to/from the keyboard*
 > import pyperclip
-pyperclip.copy('Hello world!')
-pyperclip.paste()
+  pyperclip.copy('Hello world!')
+  pyperclip.paste()
 
-//need to have //**xsel **installed
+*need to have *xsel **installed
 
 *the modules that come with Python are called the standard library, but you can also intall third-party modules using the pip tool.*
 
@@ -167,25 +167,23 @@ pyperclip.paste()
 *get rid of duplicate code*
 
 > def hello (): 
-	print ('Hello world!')
+  	print ('Hello world!')
 
 *Arguments  → the value passed in the function call*
 *Parameter → the variable inside the function*
 
 > def hello (name): 
-	print ('Hello ' + name)
+  	print ('Hello ' + name)
 
 #### return value
 
-'''
-	def plusOne (number) :
-	    return number + 1
-	'''
+def plusOne (number) :
+		return number + 1
 
 #### the non-value
 
 *the //**None*** value the none type //
-*every function return value, ever the //**print ***function.  If  the function not have the return statement, the returned value is None//
+*every function return value, ever the ***print ***function.  If  the function not have the return statement, the returned value is None*
 
 #### keyword arguments
 
@@ -205,17 +203,17 @@ print ('cat', 'dog', 'mouse', sep= 'ABC')
 #### to assign global variable into function
 
 > def spam ():
-	global eggs
-	eggs = 'Hello'
+  	global eggs
+  	eggs = 'Hello'
 
 # Handling Errors with try/except
 
 *it's possible to handle errors and permit terminate the program if some operation failes and not crash the entire program*
 
 > try:
-	operation
-except: 
-	error_handler
+  	operation
+  except: 
+  	error_handler
 
 *except block is executed when the try block failed*
 
@@ -267,7 +265,7 @@ spam [1,3]  → 50
 ### for
 
 > for i in [0,1,2,3]
-	print (i)
+  	print (i)
 
 *this is the sequencies in python*
 
@@ -284,8 +282,8 @@ len(myList)
 ### multiple assignment
 
 > cat = ['fat', 'orange', 'loud']
-size, color, disposition = cat
-color → orange
+  size, color, disposition = cat
+  color → orange
 
 or
 ''size, color, disposition = 'skinny', black, 'quiet'''
@@ -293,14 +291,14 @@ or
 ### swap:
 
 > a = 1
-b = 2
-a,b=b,a→ a=2, b = 1
+  b = 2
+  a,b=b,a→ a=2, b = 1
 
 ### augmented assignment
 
 > spam += 1
-spam -= 1
-...
+  spam -= 1
+  ...
 
 ## List Methods
 
@@ -309,7 +307,7 @@ spam -= 1
 #### index
 
 > spam = ['hello','hi','howdy','heyas']
-spam.index('hello')→ 0
+  spam.index('hello')→ 0
 
 *if not find return error message*
 *if multiple value present return the first one index*
@@ -317,25 +315,25 @@ spam.index('hello')→ 0
 #### append
 
 > spam = ['hello','hi','howdy','heyas']
-spam.append = ('ciao')
-spam → ['hello','hi','howdy','heyas', 'ciao']
+  spam.append = ('ciao')
+  spam → ['hello','hi','howdy','heyas', 'ciao']
 
 #### insert
 
 > spam.insert(1,'hola')
-spam → ['hello','hola','hi','howdy','heyas', 'ciao']
+  spam → ['hello','hola','hi','howdy','heyas', 'ciao']
 
 #### remove
 
 > spam.remove('hola')
-spam → ['hello','hi','howdy','heyas', 'ciao']
+  spam → ['hello','hi','howdy','heyas', 'ciao']
 
 *only the first one is removed*
 
 #### sort
 
 > spam = [2,1,5,4]
-spam.sort() → [1,2,4,5]
+  spam.sort() → [1,2,4,5]
 
 *also working with strings*
 *also in reverse order:*
@@ -352,8 +350,8 @@ spam.sort() → [1,2,4,5]
 * *you can't reassign a value to some character of the string*
 *the correct way to change the string is create a new string from the slices*
 > name = 'Zophie a cat' 
-newName = name[0:7] + 'the' + name[8:12]
-newName → 'Zophie the cat'
+  newName = name[0:7] + 'the' + name[8:12]
+  newName → 'Zophie the cat'
 
 * *list despite integers are referenced, so when you create new list ad assign the value of the old list. The new and the old one are the same list with the same reference to a memory  and when one of two lists change the other one change too, because is the same computer memory* 
 * *for this list is a mutable value because it's not stored into variable*
@@ -363,14 +361,134 @@ newName → 'Zophie the cat'
 
 *the copy module permit to copy the list into the new separate list*
 > import copy
-spam = ['A','B','C']
-chesse = copy.deepcopy(spam)
+  spam = ['A','B','C']
+  chesse = copy.deepcopy(spam)
 
 *lists can be write on multiple lines:*
 > spam = [ 'apples'
-	 'oranges',
-	 'bananas']
+  	 'oranges',
+  	 'bananas']
 
 *the long line of code can be written on multiple line with '\' :*
 > print('This is the long line of code ...' + \
-      'here is the another piece of code ...')
+        'here is the another piece of code ...')
+
+# Dictionaries
+
+*collection of many values but unlike list indexes, indexes for dictionaries can use many different data types not just integers*
+*indexes for the dictionaries are called keys*
+*keys with its associated value is called a key value pair*
+
+> In [24]: myCat = {'size':'fat','color':'gray','disposition':'loud'}
+In [25]: myCat                                                                
+Out[25]: {'size': 'fat', 'color': 'gray', 'disposition': 'loud'}
+In [26]: myCat['size']                                                        
+Out[26]: 'fat'
+
+*indexes not start from  0, but can be any value*
+*dictionaries are unordered (comparison of two dictionaries with different order product True)*
+
+"*in" and "not in" operators working with dictionaries*
+
+'''
+In [27]: list(myCat.values())                                                    
+Out[27]: ['fat', 'gray', 'loud']
+
+In [28]: list(myCat.keys())                      
+Out[28]: ['size', 'color', 'disposition']                                                         
+
+In [29]: list(myCat.items())                     
+Out[29]: [('size', 'fat'), ('color', 'gray'), ('disposition', 'loud')]                            
+
+In [30]: myCat.items()  
+Out[30]: dict_items([('size', 'fat'), ('color', 'gray'), ('disposition', 'loud')])
+'''
+
+*use in for loops:*
+
+'''
+In [62]: for k in myCat.values(): 
+    ...:     print (k) 
+    ...:                
+fat
+gray
+loud
+1
+
+In [70]: for k,z in myCat.items(): 
+    ...:     print (k,'-',z) 
+    ...:                
+size - fat
+color - gray
+disposition - loud
+age - 1
+'''
+
+#### get method
+
+'''
+In [73]: myCat          
+Out[73]: {'size': 'fat', 'color': 'gray', 'disposition': 'loud', 'age': 1}
+
+In [74]: myCat.get('age',0)                      
+Out[74]: 1
+'''
+
+*permit to check if some value exist into the dictionary, without causing error if not. If value not exist, return the default value setted into method*
+
+#### setdefault method
+
+*set the dafault value if not exist*
+
+'''
+In [75]: myCat          
+Out[75]: {'size': 'fat', 'color': 'gray', 'disposition': 'loud', 'age': 1}
+
+In [76]: myCat.setdefault('color',1)             
+Out[76]: 'gray'
+
+In [77]: myCat.setdefault('aaa',213)             
+Out[77]: 213
+
+In [78]: myCat          
+Out[78]: {'size': 'fat', 'color': 'gray', 'disposition': 'loud', 'age': 1, 'aaa': 213}
+'''
+
+#### pprint module
+
+'''
+pprint.pprint (count)
+
+rjtext = pprint.pformat(count)
+print(rjtext)
+'''
+
+*pprint()* *permit to display a dictionary value cleanly*
+*pformat() function returns a string value of the output*
+
+## Data structures
+
+*list of dictionaries*
+
+> In [83]: cat    
+Out[83]: {'size': 'fat', 'color': 'gray', 'disposition': 'loud', 'age': 1}
+In [86]: allCats = []
+In [88]: allCats.append({'size': 'gray', 'color': 'gray', 'disposition': 'loud', 'age': 7})
+In [90]: allCats.append({'size': 'big', 'color': 'red', 'disposition': 'loud', 'age': 7}) 
+In [91]: allCats           
+Out[91]: 
+[{'size': 'gray', 'color': 'gray', 'disposition': 'loud', 'age': 7},
+ {'size': 'big', 'color': 'red', 'disposition': 'loud', 'age': 7}]
+
+#### Type function
+
+*return the type of some object*
+'''
+In [92]: a = 123        
+
+In [93]: a              
+Out[93]: 123
+
+In [94]: type(a)        
+Out[94]: int
+'''

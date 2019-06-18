@@ -666,3 +666,47 @@ if you don't need a windows to see output:
 > import sys
 print('Hello %s' % sys.argv[2])
 print(sys.argv)
+
+## Regular expressions
+
+* *regular expressions are mini-language for specifying text patterns. Writing code to do pattern matching without regula expression is a huge pain.*
+* *regex strings often use \ backslashes (like \d), so they are often raw strings: r'\d'*
+* *import the re module*
+* *call the re.compile() function to create a regex object*
+* *call the regex object's search() method to create a match object*
+* *call the match object's group() method to get the matched string*
+* *\d is the regex for a numeric digit character*
+
+### regex groups and the pipe character
+
+'''
+In [183]: phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')       
+
+In [184]: mo = phoneNumRegex.search('My number is 415-555-4242.')         
+
+In [185]: mo.group()   
+Out[185]: '415-555-4242'
+
+In [186]: mo.group(1)  
+Out[186]: '415'
+
+In [187]: mo.group(2)  
+Out[187]: '555-4242'
+'''
+
+#### pipe
+
+'''
+In [188]: batRegex = re.compile(r'Bat(man|mobile|copter|bat)')            
+
+In [189]: mo = batRegex.search('Batmobile lost a wheel')                  
+
+In [190]: mo.group()                 
+Out[190]: 'Batmobile'
+'''
+
+* groups are created in regex strings with parentheses
+* the first set of parentheses is group 1, the second is 2, ..
+* calling group() or group(0) returns the full matching string, group(1) returns group 1's matching string, and so on.
+* use \( and \) to match literal parentheses in the regex string
+* the | pipe can match one of many possible groups

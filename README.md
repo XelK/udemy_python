@@ -492,3 +492,156 @@ Out[93]: 123
 In [94]: type(a)        
 Out[94]: int
 '''
+
+# More about strings
+
+## Advanced string syntax
+
+string can be delimeted with '... ' or " ... " 
+
+| Escape character | Prints as            |
+|:-----------------|:---------------------|
+| \'               | Single quote         |
+| \"               | Double quote         |
+| \t               | Tab                  |
+| \ n              | Newline (line break) |
+| \\               | Backslash            |
+
+#### Raw string
+
+> In [97]: r'That is a Carol\'s cat'             
+Out[97]: "That is a Carol\\'s cat"
+
+*print any backslashes in the string and ignore escape characters*
+
+#### Multiline string
+
+> '''jklsdjflkdsf
+   sdhkjfhdskj
+   werwoiejr'''
+
+#### Similarities between strings and lists
+
+*can perform many operations on the string as on the lists*
+
+## String methods
+
+### upper() lower ()
+
+'''
+In [101]: spam = 'Hello world!'                  
+
+In [102]: spam.upper()  
+Out[102]: 'HELLO WORLD!'
+
+In [103]: spam.lower()  
+Out[103]: 'hello world!'
+'''
+
+### isupper(), islower()
+
+'''
+In [107]: spam = 'hello world!'                  
+
+In [108]: spam.islower()
+Out[108]: True
+'''
+
+### other methods
+
+* isalpha()   - letters only
+* isalnum()   - letters and number only
+* isdecimal() - numbers only
+* isspace()   - whitespace only
+* istitle()   - titlecase only (all words inside the string begin with uppercase)
+
+### startswith() / endswith()
+
+'''
+In [109]: spam   
+Out[109]: 'hello world!'
+
+In [110]: spam.startswith('hello') 
+Out[110]: True
+
+In [111]: spam.endswith('d!')      
+Out[111]: True
+'''
+
+### join()
+
+*usefull when you need to join a list of strings into a single string*
+
+> In[112]:','.join(['cats','rats','bats'])                          
+Out[112]: 'cats,rats,bats'
+
+### split()
+
+//split string into a list of worlds //
+
+> In [113]: 'My name is Simon'.split()                                
+Out[113]: ['My', 'name', 'is', 'Simon']
+
+*split by another character:*
+> In [118]: 'My name is Simon'.split('m') 
+Out[118]: ['My na', 'e is Si', 'on']
+
+### ljust(), rjust(), center ()
+
+*justify characters (left/right):*
+
+> In [119]: 'Hello'.rjust(10)           
+Out[119]: '   Hello'
+
+*make string 10 characters long*
+
+> In [122]: 'Hello'.rjust(15,'*')       
+Out[122]: '**********Hello'
+'''
+
+In [123]: 'Hello'.center(20)            
+Out[123]: '       Hello        '
+
+In [124]: 'Hello'.center(20,'=')        
+Out[124]: '=======Hello========'
+'''
+
+### strip (), lstrip(), rstrip()
+
+*remove white space before/after the string*
+
+'''
+In [129]: aaa='Hello  '.rjust(10)       
+
+In [130]: aaa       
+Out[130]: '   Hello  '
+
+In [131]: aaa.strip()                   
+Out[131]: 'Hello'
+'''
+
+*it possible to remove not only empty space chacarter*
+> In [132]: 'aadq324sflkf324kaf324'.strip('324')                                
+Out[132]: 'aadq324sflkf324kaf'
+
+### replace()
+
+'''
+In [133]: spam = 'Hello there!'         
+
+In [134]: spam.replace('e','AAA')       
+Out[134]: 'HAAAllo thAAArAAA!'
+'''
+
+## string formatting
+
+*in the string you can use %s for variable and % (var1,var2) out*
+
+'''
+In [135]: name = 'Alex'                 
+
+In [136]: age = 26  
+
+In [137]: 'Hello %s, you are %s' % (name,age)                                   
+Out[137]: 'Hello Alex, you are 26'
+'''

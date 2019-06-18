@@ -667,7 +667,7 @@ if you don't need a windows to see output:
 print('Hello %s' % sys.argv[2])
 print(sys.argv)
 
-## Regular expressions
+# Regular expressions
 
 * *regular expressions are mini-language for specifying text patterns. Writing code to do pattern matching without regula expression is a huge pain.*
 * *regex strings often use \ backslashes (like \d), so they are often raw strings: r'\d'*
@@ -677,7 +677,7 @@ print(sys.argv)
 * *call the match object's group() method to get the matched string*
 * *\d is the regex for a numeric digit character*
 
-### regex groups and the pipe character
+## regex groups and the pipe character
 
 '''
 In [183]: phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')       
@@ -694,7 +694,7 @@ In [187]: mo.group(2)
 Out[187]: '555-4242'
 '''
 
-#### pipe
+## pipe
 
 '''
 In [188]: batRegex = re.compile(r'Bat(man|mobile|copter|bat)')            
@@ -710,3 +710,74 @@ Out[190]: 'Batmobile'
 * calling group() or group(0) returns the full matching string, group(1) returns group 1's matching string, and so on.
 * use \( and \) to match literal parentheses in the regex string
 * the | pipe can match one of many possible groups
+
+## Repetition in Regex Patterns and Greedy/Nongreedy Matching
+
+*matching a specific number of repetitions*
+
+#### zero or one match
+
+* (..)? 
+
+'''
+In [199]: import re                  
+
+In [200]: batRegex = re.compile(r'Bat(wo)?man')                           
+
+In [201]: mo = batRegex.search('The Adventures of Batman')                
+
+In [202]: mo.group()                 
+Out[202]: 'Batman'
+
+In [203]: mo = batRegex.search('The Adventures of Batwoman')              
+
+In [204]: mo.group()                 
+Out[204]: 'Batwoman'
+'''
+
+#### zero or more match
+
+* (..)*
+
+'''
+In [205]: batRegex = re.compile(r'Bat(wo)*man')                         
+
+In [206]: mo = batRegex.search('The Adventures of Batwoman')            
+
+In [207]: mo.group()                
+Out[207]: 'Batwoman'
+
+In [208]: mo = batRegex.search('The Adventures of Batwowowowoman')      
+
+In [209]: mo.group()                
+Out[209]: 'Batwowowowoman'
+'''
+
+### one or more match
+
+* (..)+
+
+### specific number of match
+
+* (..){number}
+
+### range of match
+
+* (..){numberA,numberB}
+
+### non greedy match
+
+* match the shortest string possible - not default
+* (..){number1,number2}?
+
+'''
+In [217]: digitRegex = re.compile(r'(\d){3,5}')                         
+
+In [218]: digitRegex.search('1234567890')                               
+Out[218]: <re.Match object; span=(0, 5), match='12345'>
+
+In [219]: digitRegex = re.compile(r'(\d){3,5}?')                        
+
+In [220]: digitRegex.search('1234567890')                               
+Out[220]: <re.Match object; span=(0, 3), match='123'>
+'''

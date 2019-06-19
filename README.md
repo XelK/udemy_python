@@ -150,6 +150,7 @@ str ( int (myAge))
   sys.exit( )
 
 **pyperclip module**
+
 *permit to copy/paste text to/from the keyboard*
 > import pyperclip
   pyperclip.copy('Hello world!')
@@ -780,4 +781,49 @@ In [219]: digitRegex = re.compile(r'(\d){3,5}?')
 
 In [220]: digitRegex.search('1234567890')                               
 Out[220]: <re.Match object; span=(0, 3), match='123'>
+'''
+
+## Regex Character Classes and teh findall() method
+
+| Shorthand character class | Represents                                                                                               |
+|:--------------------------|:---------------------------------------------------------------------------------------------------------|
+| \d                        | Any numeric digit from 0 to 9                                                                            |
+| \D                        | Any character that is not a numeric digit from 0 to 9                                                    |
+| \w                        | Any letter, numeric digit, or the undescore character. \n (Think of this as matching "word" characters.) |
+| \W                        | Any character that is not a letter, numeric digit or \n the underscore character.                        |
+| \s                        | Any space, tab, or newline character. \n (Think of this as matching "space" characters.)                 |
+| \S                        | Any character that is nota a space, tab, or newline.                                                     |
+| ^                         | makes a negative character class \n matching anything not in the brackets []                             |
+|                           |                                                                                                          |
+
+'''
+In [15]: lyrics = '12 drummers drumming, 11 pipers piping, 10 lords a leaping, 9 ladies danic
+    ...: ng'           
+
+In [16]: xmasRegex = re.compile(r'\d+\s\w+')  
+
+In [17]: xmasRegex.findall(lyrics)            
+Out[17]: ['12 drummers', '11 pipers', '10 lords', '9 ladies']
+'''
+
+### custom class regex
+
+'''
+In [18]: vowelRegex = re.compile(r'[aeiouAEIOU]') #the same of (a|o|i|..)                    
+
+In [19]: vowelRegex.findall('Robocop eats baby food.')                                       
+Out[19]: ['o', 'o', 'o', 'e', 'a', 'a', 'o', 'o']
+
+In [20]: doubleVowelRegex = re.compile(r'[aeiouAEIOU]{2}')                                   
+
+In [21]: vowelRegex.findall('Robocop eats baby food.')                                       
+Out[21]: ['o', 'o', 'o', 'e', 'a', 'a', 'o', 'o']
+
+In [22]: doubleVowelRegex.findall('Robocop eats baby food.')                                 
+Out[22]: ['ea', 'oo']
+
+In [23]: consonantsRegex = re.compile(r'[^aeiouAEIOU]')                                      
+
+In [24]: consonantsRegex.findall('Robocop eats baby food.')                                  
+Out[24]: ['R', 'b', 'c', 'p', ' ', 't', 's', ' ', 'b', 'b', 'y', ' ', 'f', 'd', '.']
 '''

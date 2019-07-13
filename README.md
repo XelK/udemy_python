@@ -783,7 +783,7 @@ In [220]: digitRegex.search('1234567890')
 Out[220]: <re.Match object; span=(0, 3), match='123'>
 '''
 
-## Regex Character Classes and teh findall() method
+## Regex Character Classes and the findall() method
 
 | Shorthand character class | Represents                                                                                               |
 |:--------------------------|:---------------------------------------------------------------------------------------------------------|
@@ -827,3 +827,234 @@ In [23]: consonantsRegex = re.compile(r'[^aeiouAEIOU]')
 In [24]: consonantsRegex.findall('Robocop eats baby food.')                                  
 Out[24]: ['R', 'b', 'c', 'p', ' ', 't', 's', ' ', 'b', 'b', 'y', ' ', 'f', 'd', '.']
 '''
+
+## Regex Dot-star and teh Caret/Dollar characters
+
+## begins:
+
+'''
+In [1]: import re                                                                            
+
+In [2]: beginsWhithHelloRegex = re.compile(r'^Hello')                                        
+
+In [3]: beginsWhithHelloRegex.search('Hello there!')                                         
+Out[3]: <re.Match object; span=(0, 5), match='Hello'>
+
+In [4]: beginsWhithHelloRegex.search('He say: Hello there!')
+'''
+
+## ends:
+
+'''
+In [5]: endsWithWorld =re.compile(r'world!$')                                                
+
+In [6]: endsWithWorld.search('Hello world!')                                                 
+Out[6]: <re.Match object; span=(6, 12), match='world!'>
+
+In [7]: endsWithWorld.search('Hello world again!')
+'''
+
+## exact string:
+
+'''
+In [8]: allDigits = re.compile(r'^\d+$')                                                     
+
+In [9]: allDigits.search('33498573948534')                                                   
+Out[9]: <re.Match object; span=(0, 14), match='33498573948534'>
+
+In [10]: allDigits.search('334985a73948534')
+'''
+
+### anything except newline
+
+### wildcard dot character (.)
+
+'''
+In [3]: atRegex = re.compile(r'.at')                                   
+In [4]: atRegex.findall('The cat in the hat sat on the flat mat.')     
+Out[4]: ['cat', 'hat', 'sat', 'lat', 'mat']
+
+In [7]: atRegex = re.compile(r'.{1,2}at')                              
+
+In [8]: atRegex.findall('The cat in the hat sat on the flat mat.')     
+Out[8]: [' cat', ' hat', ' sat', 'flat', ' mat']
+'''
+
+### use:
+
+'''
+In [12]: nameRegex = re.compile(r'First Name (.*) Last Name: (.*)')    
+
+In [13]: nameRegex = re.compile(r'First Name: (.*) Last Name: (.*)')   
+
+In [14]: nameRegex.findall('First Name: Alex Last Name: Xelk dd')      
+Out[14]: [('Alex', 'Xelk dd')]
+'''
+
+### greedy
+
+'''
+In [15]: strin = '<ljasdkl >asdkf>'                                    
+
+In [16]: nongreedy = re.compile(r'<(.*?)>')                            
+
+In [17]: nongreedy.findall(strin)                                      
+Out[17]: ['ljasdkl ']
+
+In [18]: ngreedy = re.compile(r'<(.*)>')                               
+
+In [19]: ngreedy.findall(strin)                                        
+Out[19]: ['ljasdkl >asdkf']
+'''
+
+## second argument to compile function
+
+re.DOTALL  — match as match as possible
+	''re.compile(r'.*',re.DOTALL)''
+
+re.IGNORECASE  or re.I
+   ''re.compile(r'[aeiou]',re.I)''
+
+### recap:
+
+* ^ the string must start with the pattern
+* $ the string must end with the pattern
+* ^abc$ the string abc match the pattern
+* . (dot)  wildcard - matches anything except newlines
+
+## Regex sub () Method and Verbose Mode
+
+'''
+In [1]: import re 
+
+In [2]: namesRegex = re.compile(r'Agent \w+')                             
+
+In [3]: namesRegex.findall('Agent Alice gave the secret documents to Agent
+   ...:  Bob.')   
+Out[3]: ['Agent Alice', 'Agent Bob']
+
+In [4]: namesRegex.sub('REDACTED','Agent Alice gave the secret documents t
+   ...: o Agent Bob.')               
+Out[4]: 'REDACTED gave the secret documents to REDACTED.'
+
+In [5]: namesRegex = re.compile(r'Agent (\w)\w*')                         
+
+In [6]: namesRegex.findall('Agent Alice gave the secret documents to Agent
+   ...:  Bob.')   
+Out[6]: ['A', 'B']
+
+In [7]: namesRegex = re.compile(r'Agent ((\w)\w*)')                       
+
+In [8]: namesRegex.findall('Agent Alice gave the secret documents to Agent
+   ...:  Bob.')   
+Out[8]: [('Alice', 'A'), ('Bob', 'B')]
+
+In [9]: namesRegex.sub(r'Agent \2****','Agent Alice gave the secret docume
+   ...: nts to Agent Bob.')          
+Out[9]: 'Agent A**** gave the secret documents to Agent B****.'
+'''
+
+### verbose
+
+> In [10]: re.compile(r''' 
+    ...: \d\d\d #area code 
+    ...: -       #sdfsdf 
+    ...: \d\d\d\d# last area code''',re.VERBOSE)                      
+Out[10]: 
+re.compile(r'\n\d\d\d #area code\n-       #sdfsdf\n\d\d\d\d# last area code',
+re.UNICODE|re.VERBOSE)
+
+### multiple options
+
+> In [11]: re.compile(r''' 
+    ...: \d\d\d #area code 
+    ...: -       #sdfsdf 
+    ...: \d\d\d\d# last area code''',re.VERBOSE | re.IGNORECASE | re.DOT
+    ...: ALL )
+
+*Recap:*
+* *the sub() regex method : subsitute matches with some other text*
+* *using \1,\2, ... will subsitute group 1,2 etc in the regex pattern*
+* *passing re.VERBOSE lets you add whitespace and comments to the regex string passed to re.compile()*
+* *if you want to pass multiple arguments, combine them with |*
+
+## Regex Example Program: A phone and Email Scraper
+
+*see phoneAndEmail.py*
+
+# Files
+
+## text file
+
+helloFIle = open('/tmp/ciao')   — read mode
+
+'''
+In [1]: helloFile = open('/tmp/ciao')         
+
+In [2]: helloFile.read()                      
+Out[2]: 'ciao mondo!\nciao mondo!\nciao mondo!\nciao mondo!\nciao mondo!\n'
+
+In [3]: helloFile.close()
+> 
+
+In [6]: helloFile.readlines()                 
+Out[6]: 
+['ciao mondo!\n',
+ 'ciao mondo!\n',
+ 'ciao mondo!\n',
+ 'ciao mondo!\n',
+ 'ciao mondo!\n']
+'''
+
+*Recap*
+* *open () will return a file object which has reading and writing related methods*
+* *pass 'r' (or nothing) to open() — read monde*
+* *pass 'w' — write mode*
+* *pass 'a' — append mode*
+* *opening a nonexistant filename in write or append mode will create that file*
+* *read () / write ()*
+* *readlines() //
+* //close() — when you are done with the file*
+* *shelve module can store Python values in a binary file*
+* *shelve.open()  — return a dictionary-like shelf value*
+
+# Copying and moving files and folders
+
+import shutil 
+
+shutli.copy('aa','bb')
+shutil.copytree()
+shutil.move()
+os.unlink() — will delete a file
+os.rmdir() — will delete a folder (only if it empty)
+send2trash.send2trash() — will send a file or folder to the recycling bin (import send2trash)
+
+# Debugging
+
+Raise your own excepions with try and except statements so that your program can recover from exceptions that your anticipated, but you can also raise your own exceptions in your code. 
+
+'''
+In [2]: import traceback                      
+
+In [3]: try: 
+   ...:     raise Exception('This is the error message.') 
+   ...: except: 
+   ...:     errorFile = open('erroInfo.txt','w') 
+   ...:     errorFile.write(traceback.format_exc()) 
+   ...:     errorFile.close() 
+   ...:     print('The traceback info was written to errorInfo.txt.') 
+   ...:                
+The traceback info was written to errorInfo.txt.
+'''
+
+## Assertions
+
+is a sanity check to make sure your code isn't doing something obviously wrong, these sanity checks are performed by assert statements. If the sanity checks fails, then an AssertionError exception is raised. In code, an assert statement consists of the following:
+* the assert keywoard
+* a condition
+* a comma
+* a string to display when the condition is False
+
+An assert statement says, "I assert that this condition holds true and if not, there is a bug somewhere in the program." 
+The code should not handle assert statements with try and except; if an assert fails, your progrm should crash. 
+Assertations are for programmer errors, not user errors. For errors that can be recovered from (such as a file not being found or the user entering invalid data), raise an exceptio instead of detecting it with an assert statement.

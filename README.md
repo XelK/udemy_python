@@ -1058,3 +1058,98 @@ is a sanity check to make sure your code isn't doing something obviously wrong, 
 An assert statement says, "I assert that this condition holds true and if not, there is a bug somewhere in the program." 
 The code should not handle assert statements with try and except; if an assert fails, your progrm should crash. 
 Assertations are for programmer errors, not user errors. For errors that can be recovered from (such as a file not being found or the user entering invalid data), raise an exceptio instead of detecting it with an assert statement.
+
+*to run program without assertations "python -O myprogra.py"*
+
+## Logging
+
+**enable logging in your program with:**
+> import logging
+logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s - %(levelname)s -%(message)s')
+
+**print debug message**
+> logging.debug('Start of program')
+
+**disabling**
+> logging.disable(logging.CRITICAL)--> disable all message of CRITICAL level and below --> disable all messages
+
+**various levels of log**
+* debug
+* info
+* warning
+* error
+* critical
+
+**logging to a file**
+
+> logging.basicConfig(filename='myProgramLog.txt', level=logging.DEBUG, format='
+%(asctime)s - %(levelname)s - %(message)s')
+
+# Web
+
+*the requests moduile is a third-party module for downloading web pages and files*
+*requests.get() returns a Response object*
+*the raise_for_status() response method will raise an exception if the download failed*
+*you can save a downloaded file to your hard drive with calls to the iter_content() method*
+
+## Parsing HTML with the Beatiful Soup Module
+
+> pip install beautifulsoup4
+import bs4
+
+* *web pages are plaintext files formatted as HTML*
+* *HTML can be paresed with the BeautifulSoup module*
+* *BeatifulSoup is imported with the name bs4*
+* *pass teh string with the HTML to the bs4.BeautifulSoup() function to get a Soup object*
+* *the soup object has a select() method that can be passed a string og the CSS selector for an HTML tag*
+* *you can get a CSS selector string from the browser's developer tools by right-click the element and selecting Copy CSS Path*
+* *the select() method will return a list of matching Element objects.*
+
+## Controlling the browser with the Selenium module
+
+*permit to run browser with python → run javascript/authontication/ecc → slow*
+
+''pip install selenium''
+
+'''
+In [15]: browser = webdriver.Firefox()                                                                                                                                                      
+
+In [16]: browser.get('https://automatetheboringstuff.com')                                                                                                                                  
+
+In [17]: elem = browser.find_element_by_css_selector('.main > div:nth-child(1) > ul:nth-child(                                                                                              
+    ...: 19) > li:nth-child(1) > a:nth-child(1)')                                                                                                                                           
+
+In [18]: elem.click()     
+
+In [29]: searchElem = browser.find_element_by_class_name('gLFyf')                             
+
+In [30]: searchElem.send_keys('ciao')          
+
+In [31]: searchElem.send_keys('ciao darwin')   
+
+In [32]: searchElem.send_keys('aaa')           
+
+In [33]: searchElem.send_keys('adlajsd')       
+
+In [34]: searchElem.submit()                   
+
+In [35]: browser.back()
+
+In [36]: browser.forward()                     
+
+In [37]: browser.refresh()                     
+^[[A
+In [38]: browser.quit()
+'''
+
+* *to import selenium=, you need to run: from selenium import webdrivers*
+* to open the browser, run: browser = webdriver.Firefox()
+* to send the browser to a URL, run: beowser.get
+* the browser.find_elements_by_css_selector() method will return a list of WebElement objects
+* WebElement objects have a text variable that contains the element's HTML in a string
+* the clic() method will clock on an element in the browser
+* the send_key() method will type into a specific element in the browser
+* the submit() method will simulate clicking on the Submit button for a form 
+* the browser can also be controlled with these method: back(), forward(), refresh(), quit().
+
+**https://selenium-python.readthedocs.org**
